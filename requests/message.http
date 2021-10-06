@@ -1,0 +1,29 @@
+GET http://127.0.0.1:5000/messages
+
+###
+
+GET http://127.0.0.1:5000/messages/:messageId
+
+###
+ 
+POST  http://127.0.0.1:5000/messages
+Content-Type: application/json
+
+{
+  "text": "Checking post method",
+  "email": "post@post.po"
+}
+
+### 
+
+PATCH http://127.0.0.1:5000/messages/:messageId
+Content-Type: application/json
+
+{
+  "text": "Checking patch method",
+  "email": "patch@patch.pa"
+}
+
+###
+
+DELETE http://127.0.0.1:5000/messages/00b3e3cb-c9db-457e-a482-ea37db1ca1f5
