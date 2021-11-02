@@ -34,7 +34,7 @@ module.exports.updateMessage = (req, res) => {
 
   const updatedMessage = Message.updateMessage(messageId, body);
   if (updatedMessage) {
-    res.status(202).send(updatedMessage);
+    res.status(200).send(updatedMessage);
   } else {
     res.status(404).send('Message not found');
   }
@@ -45,5 +45,5 @@ module.exports.deleteMessage = (req, res) => {
     params: { messageId },
   } = req;
   Message.deleteMessage(messageId);
-  res.status(201).send();
+  res.status(204).send();
 };

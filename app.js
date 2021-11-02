@@ -11,15 +11,25 @@ app.get('/messages/:messageId', messageController.getMessageById);
 
 app.post(
   '/messages',
-  validate.validateMessage,
+  validate.validatePostMessage,
   messageController.createMessage
 );
 
 app.patch(
   '/messages/:messageId',
-  validate.validateMessage,
+  validate.validatePatchMessage,
   messageController.updateMessage
 );
 
 app.delete('/messages/:messageId', messageController.deleteMessage);
+
+app.use((err, req, res, next) => {
+  if (headresSent) {
+    return;
+  }
+  res
+    .status(err?.status ?? 500)
+    .send({ errors: [{ title: err?.message ?? 'Internal server error' }] });
+});
+
 module.exports = app;
